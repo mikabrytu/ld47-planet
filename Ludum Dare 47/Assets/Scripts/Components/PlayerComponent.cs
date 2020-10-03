@@ -8,12 +8,12 @@ namespace Mikabrytu.LD47.Components
     {
         [SerializeField] private float _force;
 
-        private Rigidbody rigidbody;
+        private Rigidbody2D body;
         private bool canJump = true;
 
         private void Start()
         {
-            rigidbody = GetComponent<Rigidbody>();
+            body = GetComponent<Rigidbody2D>();
         }
 
         private void Update()
@@ -22,11 +22,11 @@ namespace Mikabrytu.LD47.Components
             {
                 canJump = false;
 
-                rigidbody.AddForce(Vector3.up * _force, ForceMode.Impulse);
+                body.AddForce(Vector2.up * _force, ForceMode2D.Impulse);
             }
         }
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.tag == "Ground" && !canJump)
             {
