@@ -6,9 +6,9 @@ namespace Mikabrytu.LD47.Components
 {
     public class AttemptComponent : MonoBehaviour
     {
-        private void OnTriggerExit(Collider other)
+        private void OnTriggerExit2D(Collider2D collision)
         {
-            if (other.tag == "Player")
+            if (collision.tag == "Player")
             {
                 transform.parent.GetComponent<NoteComponent>().Failure();
             }

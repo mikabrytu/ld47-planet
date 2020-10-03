@@ -6,39 +6,36 @@ namespace Mikabrytu.LD47.Components
 {
     public class NoteComponent : MonoBehaviour
     {
-        [SerializeField] private Material _material;
-        [SerializeField] private GameManager manager;
+        [SerializeField] private GameManager _manager;
+        [SerializeField] private ParticleSystem _particle;
 
         public bool activated = false;
 
-        private Material original;
-
         private void Start()
         {
-            original = GetComponent<Renderer>().material;
+
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.tag == "Player" && !activated)
             {
-                GetComponent<Renderer>().material = _material;
                 activated = true;
+                _particle.Play();
 
-                manager.IncreaseNotes();
+                _manager.IncreaseNotes();
             }
         }
 
         public void Reset()
         {
             activated = false;
-            GetComponent<Renderer>().material = original;
         }
 
         public void Failure()
         {
             if (!activated)
-                manager.Reset();
+                _manager.Reset();
         }
     }
 }

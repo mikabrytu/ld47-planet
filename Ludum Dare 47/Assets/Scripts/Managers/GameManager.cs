@@ -9,8 +9,6 @@ namespace Mikabrytu.LD47
     public class GameManager : MonoBehaviour
     {
         [SerializeField] private List<NoteComponent> _notes;
-        [SerializeField] private Renderer _planet;
-        [SerializeField] private Material _material;
 
         private int noteCount = 0;
 
@@ -20,7 +18,7 @@ namespace Mikabrytu.LD47
 
             if (noteCount == _notes.Count)
             {
-                _planet.material = _material;
+                Debug.Log("Rotation Complete!");
             }
         }
 
